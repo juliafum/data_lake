@@ -25,5 +25,5 @@ The project includes six files:
 
 ### Build ETL Pipeline
 1. ssh to your EMR cluster.
-2. cope script to EMR cluster (scp -i myKey.pem ~/Documents/etl.py hadoop@<server>.compute-1.amazonaws.com:~/)
+2. cope script to EMR cluster (scp -i myKey.pem etl.py hadoop@<server>.compute-1.amazonaws.com:~/)
 3. exetute script by running spark-submit --master yarn etl.py
