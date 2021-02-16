@@ -66,7 +66,7 @@ def process_log_data(spark, input_data, output_data):
 
     # extract columns for users table
     users_table = spark.sql('''
-    select distinct userid, firstname, lastname, gender, level 
+    select distinct cast(userid as int) as userid, firstname, lastname, gender, level 
     from log_data where page = 'NextSong' and userid is not null
     ''')
 
@@ -100,7 +100,7 @@ def process_log_data(spark, input_data, output_data):
 	to_timestamp(l.ts/1000) as start_time,
     extract(year from (to_timestamp(l.ts/1000))) as year,
 	extract(month from (to_timestamp(ts/1000))) as month,
-    l.userid, 
+    cast(l.userid as int) as userid, 
 	l.level, 
 	s.song_id, 
 	s.artist_id, 
